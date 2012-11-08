@@ -34,16 +34,21 @@ class Garble(wx.Frame):
 		self.Show(True)
 
 	def OnExit(self,event):
-       		self.checkNote(self.textfield.GetValue());
-	        self.Destroy()
+	    try:
+		self.checkNote(self.textfield.GetValue());
+		self.Destroy()
+	    except Exception, err:
+		print("ERROR: %s\n" % str(err));		
+		self.Destroy()
+
 	
 	def consoleNote(self):
 		self.checkNote(self.consoleRead());
 			
 	def checkNote(self, message):
 		if message != "":		#  && (message != "\n")
+			self.outXML(message);
 			self.addNote(message);
-			
 			
 	def consoleRead(self):
 		content = "";
@@ -81,6 +86,52 @@ class Garble(wx.Frame):
 		content.close();
 		print "New Note ("+noteID+") added";
 
+	# Note that XML output is depreciated and vulnerable to injection attacks. 
+	def outXML(self, note):
+		time = datetime.datetime.now()
+		filename = "GarbleNotes.xml";
+		fileSize = os.path.getsize(filename)
+		
+		if fileSize < 14:	# File formatting is somehow messed up. Doesn't contain the root nodes. 
+			notes = open(filename, 'w+');
+			notes.write("<root>\n</root>");
+			notes.close();
+
+		notes = open(filename, "r+");	
+		notes.seek(os.path.getsize(filename) - 8)	# seek to right before the </root>
+
+		# write this note in... 		
+		notes.write("\n\t<note>\n");
+	
+		notes.write("\t\t<year>");
+		notes.write(str(time.year));
+		notes.write("</year>\n");
+	
+		notes.write("\t\t<month>");
+		notes.write(str(time.month));
+		notes.write("</month>\n");
+	
+		notes.write("\t\t<day>");
+		notes.write(str(time.day));
+		notes.write("</day>\n");
+
+		notes.write("\t\t<hour>");
+		notes.write(str(time.hour));
+		notes.write("</hour>\n");
+	
+		notes.write("\t\t<minute>");
+		notes.write(str(time.minute));
+		notes.write("</minute>\n");
+	
+		notes.write("\t\t<message>");
+		notes.write(str(note));		# Omit tabbing so that we can preserve it using Pre Tag when doing XML rendering...
+		notes.write("\n");	
+	
+		notes.write("\n\t\t</message>\n");	
+		notes.write("\t</note>\n");
+	
+		notes.write("</root>");	
+		notes.close();
 #addNote();
 
 

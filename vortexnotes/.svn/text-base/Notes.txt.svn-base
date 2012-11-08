@@ -1,0 +1,5 @@
+svn checkout https://vortexnotes.googlecode.com/svn/trunk vortexnotes --username c0balt279
+
+svn commit -m "Saving recent changes" http://localhost/svn_dir/repository/project_dir
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+
+<root>
+
+
+	<note>
+		<year>2010</year>
+		<month>12</month>
+		<day>30</day>
+		<hour>18</hour>
+		<minute>26</minute>
+		<message>Hello World
+
+		</message>
+	</note>
+</root>
