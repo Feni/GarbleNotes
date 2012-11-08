@@ -1,16 +1,53 @@
 note
 {
-background-color: #ffffff;
-width: 100%;
+	background-color: #ffffff;
+	width: 100%;
+
+	display: block;
+	margin-bottom: 20pt;
+	margin-left: 0;
+	width:100%;
+	
+	background-color:#FFFFFF;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	padding-top:3px;
+	padding-bottom:3px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
+	padding-left:15px;
+	padding-right:0px;
 }
 message
 {
-display: block;
-margin-bottom: 30pt;
-margin-left: 0;
+	display: block;
+	margin-bottom: 30pt;
+	margin-left: 0;
+	white-space: pre;
 }
-year,month,day,hour,minute
-{
-color: #ffffff;		/* invisible unless you highlight it */
-margin-left: 20pt;
+year,month,day{
+	color: #eeeeee;	
+}
+year:hover, month:hover, day:hover{
+	color:#000000;
+}
+month:before, day:before{
+	content:", ";
+}
+hour,minute{
+	display:inline;
+	position: absolute;
+	width:32px; 
+	right: 0;
+}
+hour{
+	width:64px;
+}
+hour:after {
+	content: ":";
+}
+root{
+	padding:20px 20px 20px 20px;
+	background:grey;
+	background-image:url("WebsiteBackground-760x446.jpg");
 }

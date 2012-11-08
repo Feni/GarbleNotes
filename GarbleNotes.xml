@@ -4,38 +4,47 @@
 <root>
 
 	<note>
-		<year>2010</year>
-		<month>6</month>
-		<day>26</day>
-		<hour>18</hour>
-		<minute>28</minute>
+		<meta>
+			<time>
+			<year>2010</year>
+			<month>7</month>
+			<day>9</day>
+			<hour>23</hour>
+			<minute>55</minute>
+		</time>
+	</meta>
 		<message>
-			Hello World
+Helloooooooooo World!
 		</message>
 	</note>
-
 	<note>
-		<year>2010</year>
-		<month>6</month>
-		<day>26</day>
-		<hour>18</hour>
-		<minute>28</minute>
+		<meta>
+			<time>
+			<year>2010</year>
+			<month>7</month>
+			<day>9</day>
+			<hour>23</hour>
+			<minute>56</minute>
+		</time>
+	</meta>
 		<message>
-			This is my second note!
+This is another note... Just a little something...
 		</message>
 	</note>
-
 	<note>
-		<year>2010</year>
-		<month>6</month>
-		<day>26</day>
-		<hour>18</hour>
-		<minute>28</minute>
+		<meta>
+			<time>
+			<year>2010</year>
+			<month>7</month>
+			<day>9</day>
+			<hour>23</hour>
+			<minute>56</minute>
+		</time>
+	</meta>
 		<message>
-			another note
-			this time in multiple lines
-			let's see how that works out!
-			123434320894028350238409243t509475801984
+Though enter finishes the sentence, there's a way around it...
+ 
+The hidden space... Tada!!!
 		</message>
 	</note>
 </root>

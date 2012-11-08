@@ -36,36 +36,43 @@ def addNote():
 		notes.close();
 
 	notes = open(filename, "r+");	
-	notes.seek(os.path.getsize(filename) - 7)	# seek to right before the </root>
+	notes.seek(os.path.getsize(filename) - 8)	# seek to right before the </root>
 
 	# write this note in... 		
 	notes.write("\n\t<note>\n");
 	
-	notes.write("\t\t<year>");
+	notes.write("\t\t<meta>\n");
+	notes.write("\t\t\t<time>\n");
+	
+	notes.write("\t\t\t<year>");
 	notes.write(str(time.year));
 	notes.write("</year>\n");
 	
-	notes.write("\t\t<month>");
+	notes.write("\t\t\t<month>");
 	notes.write(str(time.month));
 	notes.write("</month>\n");
 	
-	notes.write("\t\t<day>");
+	notes.write("\t\t\t<day>");
 	notes.write(str(time.day));
 	notes.write("</day>\n");
 
-	notes.write("\t\t<hour>");
+	notes.write("\t\t\t<hour>");
 	notes.write(str(time.hour));
 	notes.write("</hour>\n");
 	
-	notes.write("\t\t<minute>");
+	notes.write("\t\t\t<minute>");
 	notes.write(str(time.minute));
 	notes.write("</minute>\n");
 	
+	notes.write("\t\t</time>\n");
+	notes.write("\t</meta>\n");
+	
 	notes.write("\t\t<message>");
 	
-	content = raw_input(":")
+	content = raw_input(":");
 	while content != "":
-		notes.write("\n\t\t\t");		# Proper spacing and tabbing... for style reasons... 
+	#	notes.write("\n\t\t\t");		# Proper spacing and tabbing... for style reasons... 
+		notes.write("\n");			# Omit tabbing so that we can preserve it using Pre Tag when doing XML rendering...
 		notes.write(content);
 		content = raw_input(":")
 	
