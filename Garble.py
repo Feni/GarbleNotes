@@ -23,58 +23,67 @@
 
 import datetime	# import the datetime package to allow us to add in the time meta-data
 import os;	# Allows us to get the filesize, which allows us to seek to the position right before </root>
+import dircache;
 
 def addNote():
 	time = datetime.datetime.now()
 
-	filename = "GarbleNotes.xml";
-	fileSize = os.path.getsize(filename)
-	
-	if fileSize < 14:	# File formatting is somehow messed up. Doesn't contain the root nodes. 
-		notes = open(filename, 'w+');
-		notes.write("<root>\n</root>");
-		notes.close();
+	if os.path.exists("Notes") == False:
+		print "Setting up Notes folder";
+		os.mkdir("Notes");
 
-	notes = open(filename, "r+");	
-	notes.seek(os.path.getsize(filename) - 8)	# seek to right before the </root>
-
-	# write this note in... 		
-	notes.write("\n\t<note>\n");
+	dirlist = dircache.listdir('Notes')
+	filedir = str(len(dirlist));	# Bug of overwriting over an existing folder if we delete a file and the count messes up. 
+	print "There are currently "+filedir+" notes in the Notes folder ";
+		
+	os.chdir("Notes")
+	os.mkdir(filedir);				# Convention: Start at message 0...
+	os.chdir(filedir);				# Move to the folder specific for this note...
 	
-	notes.write("\t\t<year>");
+	filename = "meta.xml";	
+	notes = open(filename, "w");
+
+	# write this note in... 
+	notes.write('<?xml version="1.0" encoding="UTF-8" ?>');
+	notes.write("<note id = '"+filedir+"'>");
+	
+	notes.write("<created>");
+	notes.write("<year>");
 	notes.write(str(time.year));
-	notes.write("</year>\n");
+	notes.write("</year>");
 	
-	notes.write("\t\t<month>");
+	notes.write("<month>");
 	notes.write(str(time.month));
-	notes.write("</month>\n");
+	notes.write("</month>");
 	
-	notes.write("\t\t<day>");
+	notes.write("<day>");
 	notes.write(str(time.day));
-	notes.write("</day>\n");
+	notes.write("</day>");
 
-	notes.write("\t\t<hour>");
+	notes.write("<hour>");
 	notes.write(str(time.hour));
-	notes.write("</hour>\n");
-	
-	notes.write("\t\t<minute>");
-	notes.write(str(time.minute));
-	notes.write("</minute>\n");
-	
-	notes.write("\t\t<message>");
+	notes.write("</hour>");
 
+	notes.write("<minute>");
+	notes.write(str(time.minute));
+	notes.write("</minute>");
+
+	notes.write("</created>");
+	notes.write("<content type='text' src = 'content.txt'>");# I can't embed the content directly, since it might mess up the xml validity
+	notes.write("</content>");
+	notes.write("</note>");
 	
-	content = raw_input(":");
-	while content != "":
-	#	notes.write("\n\t\t\t");		# Proper spacing and tabbing... for style reasons... 
-		notes.write("\n");			# Omit tabbing so that we can preserve it using Pre Tag when doing XML rendering...
-		notes.write(content);
-		content = raw_input(":")
+	os.mkdir("Content");	# Create a new sub folder for all content to prevent file-name conflicts with the meta data files. 
+	os.chdir("Content")
+
+	content = open("content.txt", "w");
 	
-	notes.write("\n\t\t</message>\n");	
-	notes.write("\t</note>\n");
-	
-	notes.write("</root>");	
+	message = raw_input(":");
+	while message != "":		# Option to remove all the folder setup we did if no-message is written in...
+		content.write(message);
+		content.write("\n");
+		message = raw_input(":")
+		
 	notes.close();
 
 addNote();
