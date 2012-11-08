@@ -1,0 +1,5 @@
+A simple python-based note taking application. No maze of commands like the other, complex alternatives available on the market. Just click, write, and save. All relevant meta data is extracted from the Garble of text, so that you can search for it later. 
+Currently, the application saves the content as a formated xml that you can open in a browser. The tag extraction features haven't been implemented yet. 
+
+- Feni Varughese,
+2010
