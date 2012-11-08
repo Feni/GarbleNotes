@@ -4,47 +4,34 @@
 <root>
 
 	<note>
-		<meta>
-			<time>
-			<year>2010</year>
-			<month>7</month>
-			<day>9</day>
-			<hour>23</hour>
-			<minute>55</minute>
-		</time>
-	</meta>
+		<year>2010</year>
+		<month>7</month>
+		<day>9</day>
+		<hour>23</hour>
+		<minute>59</minute>
 		<message>
-Helloooooooooo World!
+Okey, so the meta thing was a stupid idea...
+It didn't work out...
 		</message>
 	</note>
 	<note>
-		<meta>
-			<time>
-			<year>2010</year>
-			<month>7</month>
-			<day>9</day>
-			<hour>23</hour>
-			<minute>56</minute>
-		</time>
-	</meta>
+		<year>2010</year>
+		<month>7</month>
+		<day>9</day>
+		<hour>23</hour>
+		<minute>59</minute>
 		<message>
-This is another note... Just a little something...
+Back to basics...
 		</message>
 	</note>
 	<note>
-		<meta>
-			<time>
-			<year>2010</year>
-			<month>7</month>
-			<day>9</day>
-			<hour>23</hour>
-			<minute>56</minute>
-		</time>
-	</meta>
+		<year>2010</year>
+		<month>7</month>
+		<day>9</day>
+		<hour>23</hour>
+		<minute>59</minute>
 		<message>
-Though enter finishes the sentence, there's a way around it...
- 
-The hidden space... Tada!!!
+Hey, can i crash the program by typing message 
 		</message>
 	</note>
 </root>
