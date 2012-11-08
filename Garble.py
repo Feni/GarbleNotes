@@ -32,58 +32,34 @@ def addNote():
 		print "Setting up Notes folder";
 		os.mkdir("Notes");
 
-	dirlist = dircache.listdir('Notes')
-	filedir = str(len(dirlist));	# Bug of overwriting over an existing folder if we delete a file and the count messes up. 
-	print "There are currently "+filedir+" notes in the Notes folder ";
-		
 	os.chdir("Notes")
-	os.mkdir(filedir);				# Convention: Start at message 0...
+	
+	# 2010 020 416 305 900
+	filedir = (time.year * 10**12) + (time.month * 10**10) + (time.day * 10**8) + (time.hour * 10**6) + (time.minute * 10**4) + (time.second * 10**2);
+	
+	tries = 0;
+	while os.path.exists(str(filedir)) == True:
+		filedir = filedir+1
+		tries = tries+1		# Keep track of how many times we're adding, so that we don't overlap the second count. 
+		if tries == 99:		# I'm sleepy. possibly a math bug here... check back when awake... 
+			filedir-98;
+			filedir*100;
+	
+	# Assuming that we no longer need filedir as a long. Converting to str permenentaly for optimization... to avoid repeted conversion...
+	# and to avoid an extra variable. 
+	
+	filedir = str(filedir)	
+	print "New Note. ID: "+filedir
+	os.mkdir(filedir);
+
 	os.chdir(filedir);				# Move to the folder specific for this note...
-	
-	filename = "meta.xml";	
-	notes = open(filename, "w");
-
-	# write this note in... 
-	notes.write('<?xml version="1.0" encoding="UTF-8" ?>');
-	notes.write("<note id = '"+filedir+"'>");
-	
-	notes.write("<created>");
-	notes.write("<year>");
-	notes.write(str(time.year));
-	notes.write("</year>");
-	
-	notes.write("<month>");
-	notes.write(str(time.month));
-	notes.write("</month>");
-	
-	notes.write("<day>");
-	notes.write(str(time.day));
-	notes.write("</day>");
-
-	notes.write("<hour>");
-	notes.write(str(time.hour));
-	notes.write("</hour>");
-
-	notes.write("<minute>");
-	notes.write(str(time.minute));
-	notes.write("</minute>");
-
-	notes.write("</created>");
-	notes.write("<content type='text' src = 'content.txt'>");# I can't embed the content directly, since it might mess up the xml validity
-	notes.write("</content>");
-	notes.write("</note>");
-	
-	os.mkdir("Content");	# Create a new sub folder for all content to prevent file-name conflicts with the meta data files. 
-	os.chdir("Content")
-
 	content = open("content.txt", "w");
-	
 	message = raw_input(":");
 	while message != "":		# Option to remove all the folder setup we did if no-message is written in...
 		content.write(message);
 		content.write("\n");
 		message = raw_input(":")
-		
-	notes.close();
+	
+	content.close();
 
 addNote();
