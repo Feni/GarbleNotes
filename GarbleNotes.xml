@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+
+<root>
+
+	<note>
+		<year>2010</year>
+		<month>6</month>
+		<day>26</day>
+		<hour>18</hour>
+		<minute>28</minute>
+		<message>
+			Hello World
+		</message>
+	</note>
+
+	<note>
+		<year>2010</year>
+		<month>6</month>
+		<day>26</day>
+		<hour>18</hour>
+		<minute>28</minute>
+		<message>
+			This is my second note!
+		</message>
+	</note>
+
+	<note>
+		<year>2010</year>
+		<month>6</month>
+		<day>26</day>
+		<hour>18</hour>
+		<minute>28</minute>
+		<message>
+			another note
+			this time in multiple lines
+			let's see how that works out!
+			123434320894028350238409243t509475801984
+		</message>
+	</note>
+</root>

@@ -1,0 +1,16 @@
+note
+{
+background-color: #ffffff;
+width: 100%;
+}
+message
+{
+display: block;
+margin-bottom: 30pt;
+margin-left: 0;
+}
+year,month,day,hour,minute
+{
+color: #ffffff;		/* invisible unless you highlight it */
+margin-left: 20pt;
+}
